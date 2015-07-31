@@ -15,13 +15,10 @@ RUN apt-get install wget
 RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
 RUN chmod +x miniconda.sh
 RUN ./miniconda.sh -b
-RUN export PATH=/root/miniconda/bin:$PATH
+RUN export PATH=/root/miniconda3/bin:$PATH
 RUN conda update --yes conda
-#   then create a venv and add requirements
 ADD conda-requirements.txt
-RUN conda create --yes -q -n pyenv python=3.4 --file conda-requirements.txt
-#   and activate the venv
-RUN source activate pyenv
+RUN conda install --file conda-requirements.txt
 
 # Install remaining requirements with pip
 ADD requirements.txt
