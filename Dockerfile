@@ -25,7 +25,7 @@ RUN source activate pyenv
 
 # Install remaining requirements with pip
 ADD requirements.txt
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Create oauthenticator directory and put necessary files in it
 RUN mkdir /srv/oauthenticator
