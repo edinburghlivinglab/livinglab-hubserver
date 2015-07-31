@@ -22,7 +22,7 @@ RUN conda install --file conda-requirements.txt
 
 # Install remaining requirements with pip
 RUN wget https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/requirements.txt
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # Create oauthenticator directory and put necessary files in it
 RUN mkdir /srv/oauthenticator
