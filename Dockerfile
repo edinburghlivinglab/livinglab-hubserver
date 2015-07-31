@@ -15,10 +15,9 @@ RUN apt-get install wget
 RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
 RUN chmod +x miniconda.sh
 RUN ./miniconda.sh -b
-RUN export PATH=/root/miniconda3/bin:$PATH
-RUN conda update --yes conda
+RUN /root/miniconda3/bin/conda update --yes conda
 RUN wget https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/conda-requirements.txt
-RUN conda install --file conda-requirements.txt
+RUN /root/miniconda3/bin/conda install --file conda-requirements.txt
 
 # Install remaining requirements with pip
 RUN wget https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/requirements.txt
