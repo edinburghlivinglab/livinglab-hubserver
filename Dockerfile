@@ -17,11 +17,11 @@ RUN chmod +x miniconda.sh
 RUN ./miniconda.sh -b
 RUN export PATH=/root/miniconda3/bin:$PATH
 RUN conda update --yes conda
-ADD conda-requirements.txt
+RUN wget https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/conda-requirements.txt
 RUN conda install --file conda-requirements.txt
 
 # Install remaining requirements with pip
-ADD requirements.txt
+RUN wget https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/requirements.txt
 RUN pip install -r requirements.txt
 
 # Create oauthenticator directory and put necessary files in it
