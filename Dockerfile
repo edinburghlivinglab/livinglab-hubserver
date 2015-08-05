@@ -9,19 +9,22 @@ MAINTAINER Gavin Gray <g.d.b.gray@sms.ed.ac.uk>
 # Install oauthenticator from git
 RUN pip3 install git+git://github.com/jupyter/oauthenticator.git
 
-# Preinstall large packages with conda
-#   start by installing conda and updating
-RUN apt-get install wget
-RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+# Install virtualenvs for custom kernels
+ADD https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh miniconda.sh
 RUN chmod +x miniconda.sh
 RUN ./miniconda.sh -b
-RUN /root/miniconda3/bin/conda update --yes conda
-RUN wget https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/conda-requirements.txt
-RUN /root/miniconda3/bin/conda install --file conda-requirements.txt
+ADD https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/conda-requirements.txt conda-requirements.txt 
+ADD https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/requirements.txt requirements.txt
+ADD https://raw.githubusercontent.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/master/requirements.txt ppbmfh_requirements.txt
+ADD addvenvs.sh addvenvs.sh
+RUN ["sh", "addvenvs.sh"]
 
-# Install remaining requirements with pip
-RUN wget https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/requirements.txt
-RUN pip3 install -r requirements.txt
+# remove old kernels and add in new kernel jsons
+RUN rm -r /usr/local/share/jupyter/kernels/*
+RUN mkdir /usr/local/share/jupyter/kernels/llab
+RUN mkdir /usr/local/share/jupyter/kernels/ppbmfh
+ADD llab_kernel.json /usr/local/share/jupyter/kernels/llab/kernel.json
+ADD ppbmfh_kernel.json /usr/local/share/jupyter/kernels/ppbmfh/kernel.json
 
 # Create oauthenticator directory and put necessary files in it
 RUN mkdir /srv/oauthenticator

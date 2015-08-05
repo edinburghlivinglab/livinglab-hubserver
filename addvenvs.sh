@@ -7,7 +7,10 @@ conda update --yes conda
 conda create --yes -q -n llabvenv python=3.4 --file conda-requirements.txt
 conda create --yes -q -n ppbmfhvenv python=3.4 --file conda-requirements.txt
 # enter first for pip install
-
+source activate llabvenv
+pip install -r requirements.txt
+source deactivate
 # enter second for pip install
-
-
+source activate ppbmfhvenv
+pip install -r ppbmfh_requirements.txt
+source deactivate
