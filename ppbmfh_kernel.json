@@ -1,0 +1,11 @@
+{
+ "argv": [
+  "/root/miniconda3/envs/ppbmfhvenv/bin/python3.4",
+  "-c",
+  "from IPython.kernel.zmq.kernelapp import main; main()",
+  "-f",
+  "{connection_file}"
+ ],
+ "display_name": "PPBMFH (Python 3)",
+ "language": "python"
+}
