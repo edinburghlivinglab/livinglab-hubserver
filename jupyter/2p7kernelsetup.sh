@@ -7,7 +7,6 @@ export PATH=/opt/miniconda/bin:$PATH
 conda update --quiet --yes conda
 conda install --quiet --yes --file conda-requirements.txt
 pip install -r requirements.txt
-pip install file:///srv/jupyterhub
 python2.7 -m IPython kernelspec install-self
 # clean up
 apt-get clean
