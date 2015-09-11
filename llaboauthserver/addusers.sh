@@ -8,5 +8,7 @@ for line in `cat userlist`; do
   echo "adding user $user"
   useradd -m -g users -s /bin/bash $user
   git clone https://github.com/edinburghlivinglab/dds-notebooks.git /home/$user/dds-notebooks
-  chown -R $user /home/$user
+  curl https://raw.githubusercontent.com/edinburghlivinglab/livinglab-hubserver/master/Extra%20Resources.ipynb > Extra-Resources.ipynb
+  chown -R $user:users /home/$user
+  chmod -R 700 /home/$user
 done
