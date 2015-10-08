@@ -9,6 +9,9 @@ cat requirements.txt.backup | grep -v igraph > requirements.txt
 cat requirements.txt | grep -v jupyterhub > requirements.txt.2
 cp requirements.txt requirements.txt.3
 
+# clone in dds lab
+git clone https://github.com/edinburghlivinglab/dds-notebooks.git
+
 for PYTHONVER in 2 3 ; do
   PIP="pip$PYTHONVER"
   PYTHON="python$PYTHONVER"
@@ -21,7 +24,9 @@ for PYTHONVER in 2 3 ; do
   $PIP install scikit-learn
   $PIP install nltk
   # finally install dds_notebooks
-  $PIP install --no-deps git+git://github.com/edinburghlivinglab/dds-notebooks.git
+  cd dds-notebooks
+  $PIP install --no-deps -e .
+  cd ..
 done
 
 # Reduce the image size
