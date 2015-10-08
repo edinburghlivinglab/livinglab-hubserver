@@ -49,7 +49,7 @@ ADD requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
 
 WORKDIR /srv/
-RUN git clone https://github.com/jupyter/jupyterhub.git
+RUN git clone https://github.com/edinburghlivinglab/jupyterhub.git
 WORKDIR /srv/jupyterhub/
 
 RUN pip3 install .
