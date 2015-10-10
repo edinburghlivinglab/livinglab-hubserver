@@ -19,4 +19,9 @@ ADD userlist /srv/oauthenticator/userlist
 ADD ssl /srv/oauthenticator/ssl
 RUN chmod 700 /srv/oauthenticator
 
-RUN ["sh", "/srv/oauthenticator/addusers.sh"]
+# Add the script to auto-update notebooks, and load the crontab to run it
+ADD update_dds_notebooks.sh /srv/oauthenticator/update_dds_notebooks.sh
+ADD root-crontab /srv/oauthenticator/root-crontab
+RUN crontab /srv/oauthenticator/root-crontab
+
+RUN ["bash", "+x", "/srv/oauthenticator/addusers.sh"]
