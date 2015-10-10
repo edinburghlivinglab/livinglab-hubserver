@@ -11,5 +11,5 @@ for line in `cat userlist`; do
   curl https://raw.githubusercontent.com/edinburghlivinglab/livinglab-hubserver/master/Extra%20Resources.ipynb > Extra-Resources.ipynb
   chown -R $user:users /home/$user
   chmod -R 700 /home/$user
-  sudo -u $user -H sh -c -x "cd /home/$user/dds-notebooks && git config user.email $USER@$HOSTNAME && git config user.name $USER"
+  sudo -u $user -H sh -c -x "cd /home/$user/dds-notebooks && git config user.email '$user@$HOSTNAME' && git config user.name '$user'"
 done
