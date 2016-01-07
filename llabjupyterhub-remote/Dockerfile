@@ -18,3 +18,6 @@ ADD jupyterhub_config.py /srv/jupyterhub/jupyterhub_config.py
 ADD update_dds_notebooks.sh /srv/update_dds_notebooks.sh
 ADD root-crontab /srv/root-crontab
 RUN crontab /srv/root-crontab
+
+# Add the script to initialise new users
+ADD user_init.sh user_init.sh 
