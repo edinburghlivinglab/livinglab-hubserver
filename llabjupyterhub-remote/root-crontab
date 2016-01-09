@@ -1,4 +1,4 @@
-  0 * * * * update_dds_notebooks.sh
+  0 * * * * /srv/update_dds_notebooks.sh
 # * * * * *  command to execute
 # │ │ │ │ │
 # │ │ │ │ │
