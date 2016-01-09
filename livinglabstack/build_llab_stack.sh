@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 curl https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/requirements.txt > requirements.txt
 curl https://raw.githubusercontent.com/edinburghlivinglab/dds-notebooks/master/extra_requirements.txt > extra_requirements.txt
