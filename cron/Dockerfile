@@ -13,6 +13,9 @@ ADD hourly/* /etc/periodic/hourly/
 ADD monthly/* /etc/periodic/monthly/
 ADD weekly/* /etc/periodic/weekly/
 
+# and make sure they're all runnable
+RUN chmod -R a+x /etc/periodic
+
 ENV DOCKER_HOST unix://docker.sock
 
 # run the cron daemon in the foreground
