@@ -1,0 +1,3 @@
+#!/bin/sh
+# triggers update on all the notebooks in container LLABSERVER
+docker exec $LLABSERVER sh -c "/srv/update_dds_notebooks.sh >> /srv/notebook_update.log"
