@@ -3,7 +3,9 @@ FROM ipython/scipystack
 MAINTAINER Gavin Gray <gavingray1729@gmail.com>
 
 # install requirements for many python packages
-RUN apt-get install -y build-essential python-dev libgeos-c1
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y build-essential python-dev libgeos-c1 libxml2-dev libxslt-dev
 
 WORKDIR /opt/
 ADD build_llab_stack.sh /tmp/build_llab_stack.sh
