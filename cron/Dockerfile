@@ -3,6 +3,9 @@ FROM alpine:latest
 
 MAINTAINER Gavin Gray <g.d.b.gray@sms.ed.ac.uk>
 
+# need docker installed to run docker commands
+RUN apk add --update docker
+
 # ADD in all scripts
 ADD 15min/* /etc/periodic/15min/
 ADD daily/* /etc/periodic/daily/
