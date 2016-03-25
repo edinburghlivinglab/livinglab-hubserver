@@ -8,7 +8,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Not essential, but wise to set the lang
 # Note: Users with other languages should set this in their derivative image
-RUN apt-get update && apt-get install -y language-pack-en
+RUN apt-get update && apt-get install -y language-pack-en && \
+    apt-get clean
 ENV LANGUAGE en_GB.UTF-8
 ENV LANG en_GB.UTF-8
 ENV LC_ALL en_GB.UTF-8
