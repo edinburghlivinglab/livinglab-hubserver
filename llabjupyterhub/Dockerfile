@@ -8,8 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Not essential, but wise to set the lang
 # Note: Users with other languages should set this in their derivative image
-RUN apt-get update && apt-get install -y language-pack-en && \
-    apt-get clean
+RUN apt-get update && apt-get install -y language-pack-en 
 ENV LANGUAGE en_GB.UTF-8
 ENV LANG en_GB.UTF-8
 ENV LC_ALL en_GB.UTF-8
@@ -18,7 +17,7 @@ RUN locale-gen en_GB.UTF-8
 RUN dpkg-reconfigure locales
 
 # Python binary dependencies, developer tools
-RUN apt-get update && apt-get install -y -q \
+RUN apt-get install -y -q \
     build-essential \
     make \
     gcc \
@@ -39,6 +38,7 @@ RUN apt-get update && apt-get install -y -q \
     nodejs \
     nodejs-legacy \
     npm
+RUN apt-get clean
 
 # install js dependencies
 RUN npm install -g configurable-http-proxy
@@ -48,11 +48,9 @@ RUN mkdir -p /srv/
 # install jupyterhub
 ADD requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
-
 WORKDIR /srv/
 RUN git clone https://github.com/edinburghlivinglab/jupyterhub.git
 WORKDIR /srv/jupyterhub/
-
 RUN pip3 install .
 
 WORKDIR /srv/jupyterhub/
