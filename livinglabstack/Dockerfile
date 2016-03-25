@@ -1,4 +1,4 @@
-FROM ipython/scipystack
+FROM jupyter/datascience-notebook
 
 MAINTAINER Gavin Gray <gavingray1729@gmail.com>
 
